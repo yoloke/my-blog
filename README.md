@@ -1,6 +1,6 @@
 ---
 home: true
-heroText: Baucd博客
+heroText: Baucd的博客
 tagline: 前端小朋友
 # heroImage: /hero.png
 # heroImageStyle: {
