@@ -3,7 +3,7 @@ module.exports = {
   title: "Baucd博客",
   description: "前端小朋友",
   dest: "public",
-  base: '/my-blog',
+  base: '/my-blog/',
   //base: "/",
   head: [
     [
