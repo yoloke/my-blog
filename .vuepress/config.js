@@ -3,7 +3,7 @@ module.exports = {
   title: "Baucd博客",
   description: "前端小朋友",
   dest: "public",
-  base: '/my-blog/',
+  base: '/my-blog',
   //base: "/",
   head: [
     [
@@ -58,7 +58,7 @@ module.exports = {
           },
          {
             text: "Gitee",
-            link: "https://github.com/sanyuan0704/my_blog",
+            link: " ",
             icon: "reco-mayun",
           },
         ],
