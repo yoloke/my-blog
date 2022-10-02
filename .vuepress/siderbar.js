@@ -2,19 +2,20 @@ const { createSideBarConfig } = require('./util')
 const JAVASCRIPT_PATH = '/blogs/javascript'
 const CSS_PATH = '/blogs/html_css'
 const NET_PATH = '/blogs/net'
+const ES6_PATH = '/blogs/es6'
 const PERFORM_PATH = '/blogs/performance'
 // const INTERVIEW_PATH = '/blogs/interview'
 // const BROWSER_PATH = '/blogs/browser'
 
 module.exports = {
   [JAVASCRIPT_PATH]: [
-    createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
     createSideBarConfig('JS基础', JAVASCRIPT_PATH + '/js_base'),
     createSideBarConfig('JS数组', JAVASCRIPT_PATH + '/js-array'),
+    createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
+    createSideBarConfig('ES6', ES6_PATH ),
   ],
   [CSS_PATH]: [
     createSideBarConfig('HTML', CSS_PATH + '/html'),
-    createSideBarConfig('HTML5', CSS_PATH + '/html5'),
     createSideBarConfig('CSS', CSS_PATH + '/css'),
     createSideBarConfig('CSS3', CSS_PATH + '/css3'),
     createSideBarConfig('移动端', CSS_PATH + '/mobile'),
