@@ -10,7 +10,6 @@ const PERFORM_PATH = '/blogs/performance'
 module.exports = {
   [JAVASCRIPT_PATH]: [
     createSideBarConfig('JS基础', JAVASCRIPT_PATH + '/js_base'),
-    createSideBarConfig('JS数组', JAVASCRIPT_PATH + '/js-array'),
     createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
     createSideBarConfig('ES6', ES6_PATH ),
   ],
