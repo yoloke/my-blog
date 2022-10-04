@@ -1,8 +1,8 @@
 ---
-title: css三大特性
+title: 02 css三大特性
 date: 2022-9-20
 categories: 
- - HTML/CSS
+ - CSS
 tags:
  - CSS权重
 ---
