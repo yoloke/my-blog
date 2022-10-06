@@ -1,5 +1,5 @@
 ---
-title: Axiso
+title: 02 Axiso
 date: 2022-9-20
 categories: 
  - JavaScript

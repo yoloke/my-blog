@@ -1,7 +1,7 @@
 ---
 home: true
 heroText: Baucd的博客
-tagline: 前端小朋友
+tagline: 前端学习记录
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxWidth: '600px',

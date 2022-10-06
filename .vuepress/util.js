@@ -1,9 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const getFile = (prefixPath) => {
-  console.log("sssssssssssssssssssssss");
-  console.log('process.cwd()', process.cwd());
-  console.log('prefixPath', prefixPath);
   return fs.readdirSync(path.join(process.cwd(), prefixPath))
     .map(item => `${prefixPath}/${item.replace('.md', '')}`)
 }

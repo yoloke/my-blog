@@ -1,8 +1,8 @@
 ---
-title: var、let、const区别
+title: 01 var、let、const区别
 date: 2022-6-20
 categories: 
- - ES6
+ - JavaScript
 tags:
  - es6
 ---
