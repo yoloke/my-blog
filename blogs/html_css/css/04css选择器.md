@@ -2,7 +2,7 @@
 title: 04 css 选择器
 date: 2021-07-04
 categories: 
- - CSS
+ - HTML/CSS
 tags:
  - css选择器
 ---
