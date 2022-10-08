@@ -6,8 +6,6 @@ categories:
 tags:
  - axiso
 ---
-
-
 ## 一、Axios简介
 
 **Axios框架全称**（Ajax – I/O – system）：

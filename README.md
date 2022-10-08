@@ -1,8 +1,8 @@
 ---
 home: true
-heroText: Baucd的博客
+heroText: Baucd's Blog
 tagline: 前端学习记录
-# heroImage: /hero.png
+# heroImage: /logo.png
 # heroImageStyle: {
 #   maxWidth: '600px',
 #   width: '100%',
@@ -12,7 +12,7 @@ tagline: 前端学习记录
 #   borderRadius: '1rem',
 # }
 bgImageStyle: { height: "450px" }
-isShowTitleInHome: false
+isShowTitleInHome: true
 actionText: Guide
 actionLink: /views/other/guide
 ---

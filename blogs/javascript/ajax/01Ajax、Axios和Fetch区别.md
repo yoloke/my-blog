@@ -8,10 +8,6 @@ tags:
  - ajax
  - fetch
 ---
-
-
-
-
 ## 1、Ajax
 
 英文全称为 `Asynchronous JavaScript + XML` ，翻译过来就是**异步JavaScript和XML**。

@@ -1,9 +1,9 @@
 const sidebar = require("./siderbar.js");
 module.exports = {
-  title: "Baucd博客",
+  title: "Baucd's Blog",
   description: "前端学习记录",
   dest: "public",
-  base: '/my-blog/',
+  base: "/my-blog/",
   head: [
     [
       "link",
@@ -30,7 +30,7 @@ module.exports = {
     subSidebar: "auto",
     valineConfig: {
       appId: "2eXmBHbui0RTZXlYygIJPUC1-gzGzoHsz",
-      appKey: "eyDoFqjwRdlHWI5Seq54Xkil"
+      appKey: "eyDoFqjwRdlHWI5Seq54Xkil",
     },
     nav: [
       {
@@ -49,8 +49,13 @@ module.exports = {
         items: [
           {
             text: "GitHub",
-            link: "",
-            icon: "",
+            link: "https://github.com/yoloke",
+            icon: "reco-github",
+          },
+          {
+            text: "Gitee",
+            link: "https://gitee.com/baucd",
+            icon: "reco-mayun",
           },
         ],
       },

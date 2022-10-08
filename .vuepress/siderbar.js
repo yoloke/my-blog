@@ -14,7 +14,6 @@ module.exports = {
     createSideBarConfig('JS基础', JAVASCRIPT_PATH + '/js_base'),
     createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
     createSideBarConfig('ES6', JAVASCRIPT_PATH + '/es6'),
-    createSideBarConfig('Promise', JAVASCRIPT_PATH + '/promise'),
     // {
     //   title: "JavaScript",
     //   children: [
