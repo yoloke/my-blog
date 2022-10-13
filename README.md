@@ -8,7 +8,7 @@ tagline: 前端学习记录
 #   width: '100%',
 #   display: block,
 #   margin: '9rem auto 2rem',
-#   background: '#fff',
+#   background: '#ffff',
 #   borderRadius: '1rem',
 # }
 bgImageStyle: { height: "450px" }
