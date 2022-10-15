@@ -1,6 +1,6 @@
 ---
-title: 02 css三大特性
-date: 2021-07-02
+title: 02 css 三大特性
+date: 2021-04-02
 categories: 
  - HTML/CSS
 tags:
@@ -24,14 +24,13 @@ CSS中的继承： 子标签会继承父标签的某些样式，如文本颜色�
 
 
 子元素可以继承父元素的样式：
-
-	text- font- line- 这些元素开头的可以继承，以及color属性
-
-行高的继承性：
+- `text-` `font-` `line-` 这些元素开头的可以继承，以及`color属性`
 
 ```css
+ //行高的继承性：
+ //字体大小12px 行高是字体大小的1.5倍
  body {
-   font:12px/1.5 Microsoft YaHei；//字体大小12px 行高是字体大小的1.5倍
+   font:12px/1.5 Microsoft YaHei；
  }
 ```
 
@@ -41,6 +40,36 @@ CSS中的继承： 子标签会继承父标签的某些样式，如文本颜色�
 - body 行高 1.5， 这样写法最大的优势就是里面子元素可以根据自己文字大小自动调整行高。
 
 ![image-20220930090445144](https://could-img.oss-cn-hangzhou.aliyuncs.com/202209301019566.png)
+
+:::tip 总结：有继承性的属性
+
+1. 字体系列属性：
+
+    - font-family：字体系列
+    - font-weight：字体的粗细
+    - font-size：字体的大小
+    - font-style：字体的风格
+
+2. 文本系列属性：
+    - text-indent：文本缩进
+    - text-align：文本水平对齐
+    - line-height：行高
+    - word-spacing：单词之间的间距
+    - letter-spacing：中文或者字母之间的间距
+    - text-transform：控制文本大小写（就是uppercase、lowercase、capitalize这三个）
+    - color：文本颜色
+
+3. 元素可见性：
+    - visibility：控制元素显示隐藏
+
+
+4. 列表布局属性：
+    - list-style：列表风格，包括list-style-type、list-style-image等
+
+5. 光标属性：
+
+    - cursor：光标显示为何种形态
+:::
 
 ### 3、优先级
 
