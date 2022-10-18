@@ -2,7 +2,7 @@
 title: 06 css 选择器优先级
 date: 2021-04-06
 categories: 
- - HTML/CSS
+ - CSS
 tags:
  - CSS选择器
 ---

@@ -2,7 +2,7 @@
 title: 10 display属性
 date: 2021-04-10
 categories: 
- - HTML/CSS
+ - CSS
 ---
 
 display 设置或检索对象是否及如何显示。

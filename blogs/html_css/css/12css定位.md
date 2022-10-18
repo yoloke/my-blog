@@ -2,7 +2,7 @@
 title: 12 css 定位position
 date: 2021-04-12
 categories: 
- - HTML/CSS
+ - CSS
 ---
 ## 1.1 为什么使用定位
 

@@ -2,7 +2,7 @@
 title: 02 css 三大特性
 date: 2021-04-02
 categories: 
- - HTML/CSS
+ - CSS
 tags:
  - CSS权重
 ---

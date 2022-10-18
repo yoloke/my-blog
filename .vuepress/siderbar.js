@@ -1,26 +1,27 @@
-const { createSideBarConfig } = require('./util')
-const JAVASCRIPT_PATH = '/blogs/javascript'
-const HTML_CSS_PATH = '/blogs/html_css'
-const NET_PATH = '/blogs/net'
-const PERFORM_PATH = '/blogs/performance'
-const VUE_PATH = '/blogs/vue'
-const ALGORITHM_PATH = '/blogs/algorithm'
-// const BROWSER_PATH = '/blogs/browser'
+const { createSideBarConfig } = require("./util");
+const JAVASCRIPT_PATH = "/blogs/javascript";
+const HTML_CSS_PATH = "/blogs/html_css";
+const NET_PATH = "/blogs/net";
+const PERFORM_PATH = "/blogs/performance";
+const VUE_PATH = "/blogs/vue";
+const ALGORITHM_PATH = "/blogs/algorithm";
 
 module.exports = {
-  ["/blogs"]: [
+  [HTML_CSS_PATH]: [
     createSideBarConfig("HTML", HTML_CSS_PATH + "/html"),
     createSideBarConfig("CSS", HTML_CSS_PATH + "/css"),
+  ],
+  [JAVASCRIPT_PATH]: [
     createSideBarConfig("JS基础", JAVASCRIPT_PATH + "/js_base"),
     createSideBarConfig("设计模式", JAVASCRIPT_PATH + "/design_mode"),
     createSideBarConfig("Ajax", JAVASCRIPT_PATH + "/ajax"),
     createSideBarConfig("ES6", JAVASCRIPT_PATH + "/es6"),
     // {
-    //   title: "JavaScript",
+    //   title: "算法",
     //   children: [
-    //     createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
-    //     createSideBarConfig('JavaScript', JAVASCRIPT_PATH + '/js_base'),
-    //   ]
+    //     // createSideBarConfig("算法", ALGORITHM_PATH),
+    //     // createSideBarConfig("剑指over", OVER_PATH),
+    //   ],
     // },
     // createSideBarConfig('JavaScript', JAVASCRIPT_PATH + '/js_base'),
     // createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
@@ -28,15 +29,12 @@ module.exports = {
     createSideBarConfig("Vue", VUE_PATH),
     createSideBarConfig("前端性能", PERFORM_PATH),
     createSideBarConfig("HTTP", NET_PATH),
-    createSideBarConfig("算法", ALGORITHM_PATH),
+    // createSideBarConfig("算法", ALGORITHM_PATH),
   ],
-  // [JAVASCRIPT_PATH]: [
-  // ],
-  // [CSS_PATH]: [
-  //   createSideBarConfig('HTML', CSS_PATH + '/html'),
-  //   createSideBarConfig('CSS', CSS_PATH + '/css'),
-  //   createSideBarConfig('移动端', CSS_PATH + '/mobile'),
-  // ],
+  [ALGORITHM_PATH]: [
+    createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
+    createSideBarConfig("剑指over", ALGORITHM_PATH + "/saber_over"),
+  ],
   // [NET_PATH]: [
   //   createSideBarConfig("TCP 协议", NET_PATH + '/tcp'),
   //   createSideBarConfig("HTTP 协议", NET_PATH + '/http')
