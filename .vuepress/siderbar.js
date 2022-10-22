@@ -16,20 +16,14 @@ module.exports = {
     createSideBarConfig("设计模式", JAVASCRIPT_PATH + "/design_mode"),
     createSideBarConfig("Ajax", JAVASCRIPT_PATH + "/ajax"),
     createSideBarConfig("ES6", JAVASCRIPT_PATH + "/es6"),
-    // {
-    //   title: "算法",
-    //   children: [
-    //     // createSideBarConfig("算法", ALGORITHM_PATH),
-    //     // createSideBarConfig("剑指over", OVER_PATH),
-    //   ],
-    // },
-    // createSideBarConfig('JavaScript', JAVASCRIPT_PATH + '/js_base'),
-    // createSideBarConfig('Ajax', JAVASCRIPT_PATH + '/ajax'),
-    // createSideBarConfig('ES6', JAVASCRIPT_PATH + '/es6'),
     createSideBarConfig("Vue", VUE_PATH),
     createSideBarConfig("前端性能", PERFORM_PATH),
     createSideBarConfig("HTTP", NET_PATH),
     // createSideBarConfig("算法", ALGORITHM_PATH),
+  ],
+  [VUE_PATH]: [
+    createSideBarConfig("Vue", VUE_PATH),
+    createSideBarConfig("前端性能", PERFORM_PATH),
   ],
   [ALGORITHM_PATH]: [
     createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
