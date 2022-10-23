@@ -2,7 +2,7 @@
 title: 01 Ajax、Axios和Fetch区别
 date: 2022-8-29
 categories: 
- - JavaScript
+ - Ajax
 tags:
  - axiso
  - ajax

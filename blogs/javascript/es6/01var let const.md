@@ -2,7 +2,7 @@
 title: 01 var、let、const区别
 date: 2021-6-20
 categories: 
- - JavaScript
+ - ES6
 tags:
  - es6
 ---
@@ -227,7 +227,7 @@ foo = {}; // TypeError: "foo" is read-only
 
 ### 变量提升
 
-`var`声明的变量存在变量提升，即变量可以在声明之前调用，值为`undefined
+`var`声明的变量存在变量提升，即变量可以在声明之前调用，值为`undefined`
 
 `let`和`const`不存在变量提升，即它们所声明的变量一定要在声明后使用，否则报错
 
