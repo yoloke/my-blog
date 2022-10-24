@@ -1,52 +1,52 @@
 ---
 title: 11 this指向
 date: 2021-02-11
-categories: 
- - JavaScript
+categories:
+  - JavaScript
 ---
 
 ## 1. this 的指向
 
-- 以函数的形式调用时，this永远都是window
-- 以方法的形式调用时，this就是调用方法的对象
-- 以构造函数的形式调用时，this就是新创建的对象
-- 使用call和apply调用时，this就是指定的那个对象
+- 以函数的形式调用时，this 永远都是 window
+- 以方法的形式调用时，this 就是调用方法的对象
+- 以构造函数的形式调用时，this 就是新创建的对象
+- 使用 call 和 apply 调用时，this 就是指定的那个对象
 
- 在全局作用域中this代表window
+在全局作用域中 this 代表 window
 
 > `this` 就是一个对象，`this` 是在函数被调用时发生的绑定，它指向什么完全取决于函数在哪里被调用。
 
-**1、以函数的形式调用，this永远都是window**
+**1、以函数的形式调用，this 永远都是 window**
 
 ```javascript
 var name = "windowsName";
 function a() {
-    var name = "Cherry";
+  var name = "Cherry";
 
-    console.log(this.name);          // windowsName
+  console.log(this.name); // windowsName
 
-    console.log("inner:" + this);    // inner: Window
+  console.log("inner:" + this); // inner: Window
 }
 a();
-console.log("outer:" + this)         // outer: Window
+console.log("outer:" + this); // outer: Window
 ```
 
 调用 `a` 的地方 `a()`，前面没有调用的对象那么就是全局对象 `window`，这就相当于是 `window.a()`；
 
 注意，这里我们没有使用严格模式，如果使用严格模式的话，全局对象就是 `undefined`，那么就会报错 `Uncaught TypeError: Cannot read property 'name' of undefined`。
 
-**2、以方法的形式调用时，this就是调用方法的对象**
+**2、以方法的形式调用时，this 就是调用方法的对象**
 
-**例1：**
+**例 1：**
 
 ```javascript
 var name = "windowsName";
 var a = {
-    name: "Cherry",
-    fn : function () {
-        console.log(this.name);      // Cherry
-    }
-}
+  name: "Cherry",
+  fn: function() {
+    console.log(this.name); // Cherry
+  },
+};
 a.fn();
 ```
 
@@ -54,79 +54,79 @@ a.fn();
 
 然后对象 `a` 通过 `.` 方法调用了其中的 fn 方法。
 
-**例2：**
+**例 2：**
 
 ```javascript
 var name = "windowsName";
 var a = {
-    name: "Cherry",
-    fn : function () {
-        console.log(this.name);      // Cherry
-    }
-}
+  name: "Cherry",
+  fn: function() {
+    console.log(this.name); // Cherry
+  },
+};
 window.a.fn();
 ```
 
-最后调用fn()的仍然是对象 a。
+最后调用 fn()的仍然是对象 a。
 
-**例3：**
+**例 3：**
 
 ```javascript
 var name = "windowsName";
 var a = {
-    fn : function () {
-        console.log(this.name);      // undefined
-    }
-}
+  fn: function() {
+    console.log(this.name); // undefined
+  },
+};
 window.a.fn();
 ```
 
 输出 `undefined` ：调用 fn 的是 a 对象，也就是说 fn 的内部的 this 是对象 a，而对象 a 中没有 name 这个属性，也不会继续向上一个对象寻找 `this.name`，而是直接输出 `undefined`。
 
-**例4：**
+**例 4：**
 
 ```js
 var name = "windowsName";
 var a = {
-    fn : function () {
-        console.log(this.name);      // windowsName
-    }
-}
+  fn: function() {
+    console.log(this.name); // windowsName
+  },
+};
 var f = a.fn;
 f();
 ```
 
-为什么是 `windowsName`，这是因为虽然将 a 对象的` fn `方法赋值给变量 `f` 了，但是没有调用，**this 指向最后调用它的那个对象**，由于一开始` f `并没有调用，所以 `fn()` 最后仍然是被 window 调用的。所以 this 指向的也就是 window。
+为什么是 `windowsName`，这是因为虽然将 a 对象的`fn`方法赋值给变量 `f` 了，但是没有调用，**this 指向最后调用它的那个对象**，由于一开始`f`并没有调用，所以 `fn()` 最后仍然是被 window 调用的。所以 this 指向的也就是 window。
 
-**例5：**
+**例 5：**
 
 ```javascript
 var name = "windowsName";
 
 function fn() {
-    var name = 'Cherry';
-    innerFunction();
-    function innerFunction() {
-        console.log(this.name);      // windowsName
-    }
+  var name = "Cherry";
+  innerFunction();
+  function innerFunction() {
+    console.log(this.name); // windowsName
+  }
 }
-fn()
+fn();
 ```
 
-这里的` innerFunction() `的调用：是一个函数调用（它就是作为一个函数调用的，没有挂载在任何对象上，所以对于没有挂载在任何对象上的函数，在非严格模式下 this 就是指向 window 的）
+这里的`innerFunction()`的调用：是一个函数调用（它就是作为一个函数调用的，没有挂载在任何对象上，所以对于没有挂载在任何对象上的函数，在非严格模式下 this 就是指向 window 的）
 
-**3、以构造函数的形式调用时，this就是新创建的对象**
+**3、以构造函数的形式调用时，this 就是新创建的对象**
 
 ```js
 // 构造函数:
 function myFunction(arg1, arg2) {
-    this.firstName = arg1;
-    this.lastName  = arg2;
+  this.firstName = arg1;
+  this.lastName = arg2;
 }
 
 // This    creates a new object
-var a = new myFunction("Li","Cherry");
-a.lastName;                             // 返回 "Cherry"
+var a = new myFunction("Li", "Cherry");
+a.lastName; // 返回 "Cherry"
 ```
 
 **new 的过程：**
@@ -148,36 +148,35 @@ new myFunction{
 - 如果无返回值或者返回一个非对象值，则将 obj 返回作为新对象；
 - 如果返回值是一个新对象的话那么直接直接返回该对象。
 
-所以我们可以看到，在 new 的过程中，我们是使用 call 改变了 this 的指向。 
+所以我们可以看到，在 new 的过程中，我们是使用 call 改变了 this 的指向。
 
-**4、使用call和apply调用时，this就是指定的那个对象**
+**4、使用 call 和 apply 调用时，this 就是指定的那个对象**
 
 ## 2. 改变 this 的指向
 
 ```javascript
-    var name = "windowsName";
+var name = "windowsName";
 
-    var a = {
-        name : "Cherry",
+var a = {
+  name: "Cherry",
 
-        func1: function () {
-            console.log(this.name)     
-        },
+  func1: function() {
+    console.log(this.name);
+  },
 
-        func2: function () {
-            setTimeout(  function () {
-                this.func1()
-            },100);
-        }
+  func2: function() {
+    setTimeout(function() {
+      this.func1();
+    }, 100);
+  },
+};
 
-    };
-
-    a.func2()     // this.func1 is not a function复制代码
+a.func2(); // this.func1 is not a function
 ```
 
-在不使用箭头函数的情况下，是会报错的，因为最后调用 `setTimeout` 的对象是 `window`，但是在 `window `中并没有 `func1 函数`。
+在不使用箭头函数的情况下，是会报错的，因为最后调用 `setTimeout` 的对象是 `window`，但是在 `window`中并没有 `func1 函数`。
 
-所以需要改变this指向，改变 this 的指向总结有以下几种方法：
+所以需要改变 this 指向，改变 this 的指向总结有以下几种方法：
 
 - 使用 ES6 的箭头函数
 - 在函数内部使用 `_this = this`
@@ -186,57 +185,54 @@ new myFunction{
 
 ### 2.1 箭头函数
 
-箭头函数中没有` this` 绑定，必须通过查找**作用域链**来决定其值，如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，否则，`this` 为` undefined`。
+箭头函数中没有`this` 绑定，必须通过查找**作用域链**来决定其值，如果箭头函数被非箭头函数包含，则 this 绑定的是最近一层非箭头函数的 this，否则，`this` 为`undefined`。
 
 ```javascript
 var name = "windowsName";
 var a = {
-    name : "Cherry",
+  name: "Cherry",
 
-    func1: function () {
-        console.log(this.name)     
-    },
+  func1: function() {
+    console.log(this.name);
+  },
 
-    func2: function () {
-        setTimeout( () => {
-            this.func1()
-        },100);
-    }
-
+  func2: function() {
+    setTimeout(() => {
+      this.func1();
+    }, 100);
+  },
 };
-a.func2()     // Cherry
+a.func2(); // Cherry
 ```
 
-### 2.2  _this = this
+### 2.2 \_this = this
 
 在函数内部使用 `_this = this`
 
 如果不使用 ES6，那么这种方式应该是最简单的不会出错的方式了，我们是先将调用这个函数的对象保存在变量 `_this` 中，然后在函数中都使用这个 `_this`，这样 `_this` 就不会改变了。
 
 ```javascript
-    var name = "windowsName";
+var name = "windowsName";
 
-    var a = {
+var a = {
+  name: "Cherry",
 
-        name : "Cherry",
+  func1: function() {
+    console.log(this.name);
+  },
 
-        func1: function () {
-            console.log(this.name)     
-        },
+  func2: function() {
+    var _this = this;
+    setTimeout(function() {
+      _this.func1();
+    }, 100);
+  },
+};
 
-        func2: function () {
-            var _this = this;
-            setTimeout( function() {
-                _this.func1()
-            },100);
-        }
-
-    };
-
-    a.func2()  // Cherry
+a.func2(); // Cherry
 ```
 
-这个例子中，在 func2 中，首先设置 `var _this = this;`，这里的 `this` 是调用 `func2` 的对象 a，为了防止在 `func2` 中的` setTimeout `被` window` 调用而导致的在 `setTimeout `中的` this `为` window`。我们将 `this(指向变量 a)` 赋值给一个变量 `_this`，这样，在 `func2` 中我们使用 `_this` 就是指向对象` a `了。
+这个例子中，在 func2 中，首先设置 `var _this = this;`，这里的 `this` 是调用 `func2` 的对象 a，为了防止在 `func2` 中的`setTimeout`被`window` 调用而导致的在 `setTimeout`中的`this`为`window`。我们将 `this(指向变量 a)` 赋值给一个变量 `_this`，这样，在 `func2` 中我们使用 `_this` 就是指向对象`a`了。
 
 ### 2.3 使用 apply、call、bind
 
@@ -249,83 +245,89 @@ a.func2()     // Cherry
 **apply**
 
 ```javascript
-    var a = {
-        name : "Cherry",
+var a = {
+  name: "Cherry",
 
-        func1: function () {
-            console.log(this.name)
-        },
+  func1: function() {
+    console.log(this.name);
+  },
 
-        func2: function () {
-            setTimeout(  function () {
-                this.func1()
-            }.apply(a),100);
-        }
+  func2: function() {
+    setTimeout(
+      function() {
+        this.func1();
+      }.apply(a),
+      100
+    );
+  },
+};
 
-    };
-
-    a.func2()            // Cherry复制代码
+a.func2(); // Cherry
 ```
 
 **使用 call**
 
 ```javascript
-    var a = {
-        name : "Cherry",
+var a = {
+  name: "Cherry",
 
-        func1: function () {
-            console.log(this.name)
-        },
+  func1: function() {
+    console.log(this.name);
+  },
 
-        func2: function () {
-            setTimeout(  function () {
-                this.func1()
-            }.call(a),100);
-        }
+  func2: function() {
+    setTimeout(
+      function() {
+        this.func1();
+      }.call(a),
+      100
+    );
+  },
+};
 
-    };
-
-    a.func2()            // Cherry复制代码
+a.func2(); // Cherry
 ```
 
 **使用 bind**
 
 ```javascript
-    var a = {
-        name : "Cherry",
+var a = {
+  name: "Cherry",
 
-        func1: function () {
-            console.log(this.name)
-        },
+  func1: function() {
+    console.log(this.name);
+  },
 
-        func2: function () {
-            setTimeout(  function () {
-                this.func1()
-            }.bind(a)(),100);
-        }
+  func2: function() {
+    setTimeout(
+      function() {
+        this.func1();
+      }.bind(a)(),
+      100
+    );
+  },
+};
 
-    };
-
-    a.func2()            // Cherry
+a.func2(); // Cherry
 ```
 
-## 3. appll call bind的区别
+## 3. appll call bind 的区别
 
-`apply `和` call `基本类似，他们的区别只是传入的参数不同。
+`apply`和`call`基本类似，他们的区别只是传入的参数不同。
 
-`apply `语法：
+`apply`语法：
 
 ```css
 fun.apply(thisArg, [argsArray])
 ```
 
-`call `的语法：
+`call`的语法：
 
 ```css
 fun.call(thisArg[, arg1[, arg2[, ...]]])
 ```
 
-所以 `apply `和` call `的区别是` call `方法接受的是若干个参数列表，而 `apply `接收的是一个包含多个参数的数组。
+所以 `apply`和`call`的区别是`call`方法接受的是若干个参数列表，而 `apply`接收的是一个包含多个参数的数组。
 
 ```css
 var a ={
@@ -351,9 +353,9 @@ b.apply(a,[1,2])  // 3
     b.call(a,1,2)    // 3
 ```
 
- **bind:**
+**bind:**
 
->  [MDN](https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FFunction%2Fbind) 上的文档说明：
+> [MDN](https://link.juejin.cn?target=https%3A%2F%2Fdeveloper.mozilla.org%2Fzh-CN%2Fdocs%2FWeb%2FJavaScript%2FReference%2FGlobal_Objects%2FFunction%2Fbind) 上的文档说明：
 >
 > `bind()`方法创建一个新的函数, 当被调用时，将其`this`关键字设置为提供的值，在调用新函数时，在任何提供之前提供一个给定的参数序列。
 
