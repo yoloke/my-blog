@@ -121,7 +121,7 @@ fn(1,2) // this指向window
 
 **call 函数的实现步骤：**
 
-- 判断调用对象是否为函数，即使是定义在函数的原型上的，但是可能出现使用 call 等方式调用的情况。
+- 判断调用对象this是否为函数。
 - 判断传入上下文对象是否存在，如果不存在，则设置为 window 。
 - 处理传入的参数，截取第一个参数后的所有参数。
 - 将函数作为上下文对象的一个属性。
@@ -130,24 +130,35 @@ fn(1,2) // this指向window
 - 返回结果。
 
 ```js
-Function.prototype.myCall = function(context) {
-  // 判断调用对象
-  if (typeof this !== "function") {
-    console.error("type error");
-  }
-  // 获取参数
-  let args = [...arguments].slice(1),
-    result = null;
-  // 判断 context 是否传入，如果未传入则设置为 window
-  context = context || window;
-  // 将调用函数设为对象的方法
-  context.fn = this;
-  // 调用函数
-  result = context.fn(...args);
-  // 将属性删除
-  delete context.fn;
-  return result;
+ Function.prototype.myCall = function (context) {
+     // 判断myCall的调用对象this是不是函数
+     if (typeof this !== "function") {
+         console.error("type error");
+     }
+     // 获取参数，
+     let args = [...arguments].slice(1),
+         result = null;
+     // 判断 context 是否传入，如果未传入则设置为 windows
+     context = context || window;
+     // 将调用函数设为对象的方法
+     context.fn = this;
+     // 调用函数
+     result = context.fn(...args);
+     // 将属性删除
+     delete context.fn;
+     return result;
+ };
+```
+
+```js
+const obj = {
+    a: 10,
+    b: 20,
 };
+function fn(c, d) {
+    console.log(this.a + this.b + c + d);
+}
+fn.myCall(obj, 2, 2); //34
 ```
 
 ### 3.2 apply
@@ -163,26 +174,37 @@ Function.prototype.myCall = function(context) {
 - 返回结果
 
 ```js
-Function.prototype.myApply = function(context) {
-  // 判断调用对象是否为函数
-  if (typeof this !== "function") {
-    throw new TypeError("Error");
-  }
-  let result = null;
-  // 判断 context 是否存在，如果未传入则为 window
-  context = context || window;
-  // 将函数设为对象的方法
-  context.fn = this;
-  // 调用方法
-  if (arguments[1]) {
-    result = context.fn(...arguments[1]);
-  } else {
-    result = context.fn();
-  }
-  // 将属性删除
-  delete context.fn;
-  return result;
+Function.prototype.myApply = function (context) {
+    // 判断调用对象是否为函数
+    if (typeof this !== "function") {
+        throw new TypeError("Error");
+    }
+    let result = null;
+    // 判断 context 是否存在，如果未传入则为 window
+    context = context || window;
+    // 将函数设为对象的方法
+    context.fn = this;
+    // 调用方法
+    if (arguments[1]) {
+        result = context.fn(...arguments[1]);
+    } else {
+        result = context.fn();
+    }
+    // 将属性删除
+    delete context.fn;
+    return result;
 };
+```
+
+```js
+const obj = {
+    a: 10,
+    b: 20,
+};
+function fn(c, d) {
+    console.log(this.a + this.b + c + d);
+}
+fn.myApply(obj, [2, 2]);//34
 ```
 
 ### 3.3 bind
@@ -190,7 +212,7 @@ Function.prototype.myApply = function(context) {
 实现`bind`的步骤，我们可以分解成为三部分：
 
 - 修改`this`指向
-- 动态传递参数
+- 动态传递参数，支持柯里化形式传参 fn(1)(2)
 
 ```js
 // 方式一：只在bind中传递函数参数
@@ -210,15 +232,26 @@ Function.prototype.myBind = function (context) {
     if (typeof this !== "function") {
         throw new TypeError("Error");
     }
-
-    // 获取参数
+     // 可以支持柯里化传参，保存参数
     const args = [...arguments].slice(1),
           fn = this;
 
     return function Fn() {
-
         // 根据调用方式，传入不同绑定值
-        return fn.apply(this instanceof Fn ? new fn(...arguments) : context, args.concat(...arguments)); 
+        return fn.apply(this instanceof Fn ? new fn(...arguments) : context,                 args.concat(...arguments)); 
     }
 }
 ```
+
+```js
+const obj = {
+    a: 10,
+    b: 20,
+};
+function fn(c, d) {
+    console.log(this.a + this.b + c + d);
+}
+fn.myBind(obj, 2)(2); //34
+fn.myBind(obj, 2 , 2);  //34
+```
+
