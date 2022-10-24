@@ -69,7 +69,6 @@ meta是**文档级元数据元素**，用来表示那些不能由其它 HTML 相
 
 ```html
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-复制代码
 ```
 
 `width`用来设置 viewport 的宽度等于`device-with`设备宽度;
