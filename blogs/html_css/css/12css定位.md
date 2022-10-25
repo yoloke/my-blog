@@ -16,7 +16,7 @@ categories:
 
 <img src="https://could-img.oss-cn-hangzhou.aliyuncs.com/202208220943243.png" alt="image-20220822094353842" style="zoom: 50%;" />
 
-> 结论**：要实现以上效果，**标准流 或 浮动都无法快速实现
+> 结论：要实现以上效果，标准流 或 浮动都无法快速实现
 
 所以：
 
