@@ -23,16 +23,15 @@ module.exports = {
   ],
   [VUE_PATH]: [
     createSideBarConfig("Vue", VUE_PATH),
-    createSideBarConfig("前端性能", PERFORM_PATH),
+    // createSideBarConfig("前端性能", PERFORM_PATH),
   ],
   [ALGORITHM_PATH]: [
     createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
     createSideBarConfig("剑指over", ALGORITHM_PATH + "/saber_over"),
   ],
-  // [NET_PATH]: [
-  //   createSideBarConfig("TCP 协议", NET_PATH + '/tcp'),
-  //   createSideBarConfig("HTTP 协议", NET_PATH + '/http')
-  // ],
+  [NET_PATH]: [
+    createSideBarConfig("浏览器", NET_PATH )
+  ],
   //[PERFORM_PATH]: [createSideBarConfig('前端性能', PERFORM_PATH)],
   // [INTERVIEW_PATH]: [createSideBarConfig('面试经历', INTERVIEW_PATH)],
   // [BROWSER_PATH]: [

@@ -15,7 +15,6 @@ const createSideBarConfig = (title, prefixPath, collapsable = true) => {
     children: getFile(prefixPath)
   }
 }
-
 module.exports = {
   createSideBarConfig
 }
