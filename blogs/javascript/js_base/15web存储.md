@@ -158,6 +158,6 @@ console.log(
 
 表面上看很完美，但是有两个缺点：
 
-1. `undefined和null没有constructor属性`，所以判断时`代码可能会报错`--这很致命，会导致代码运行不下去，所以只有在确定待判断的值不是undefined和null才能使用
-2. 由于`constructor属性是可以变更`的，也会导致检测出的结果不正确
+1. `undefined`和`null`没有`constructor`属性，所以判断时代码可能会报错--这很致命，会导致代码运行不下去，所以只有在确定待判断的值不是`undefined`和`null`才能使用
+2. 由于`constructor`属性是可以变更的，也会导致检测出的结果不正确
 
