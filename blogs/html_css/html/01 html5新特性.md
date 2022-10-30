@@ -12,6 +12,21 @@ HTML5 的新增特性主要是针对于以前的不足，增加了一些新的�
 
 这些新特性都有兼容性问题，基本是 **IE9+ 以上版本的浏览器**才支持，如果不考虑兼容性问题，可以大量使用这些新特性。
 
+`HTML5`主要是关于图像、位置、存储、多任务等功能的增加：
+
+- 语义化标签，如：`article`、`footer`、`header`、`nav`等
+- 视频`video`、音频`audio`
+- 画布`canvas`
+- 表单控件，`calemdar`、`date`、`time`、`email`
+- 地理
+- 本地离线存储，`localStorage`长期存储数据，浏览器关闭后数据不丢失，`sessionStorage`的数据在浏览器关闭后自动删除
+- 拖拽释放
+
+移除的元素：
+
+- 纯表现的元素：`basefont、font、s、strike、tt、u、big、center`
+- 对可选用性产生负面影响的元素：`frame、frameset、noframes`
+
 ## 1. 语义化标签 （★★）
 
 以前布局，我们基本用 div 来做。div 对于搜索引擎来说，是没有语义的

@@ -1,5 +1,5 @@
 ---
-title: 03 v-if和v-for
+title: 03 v-if 和 v-for
 date: 2021-03-03
 categories: 
  - Vue
@@ -25,113 +25,12 @@ categories:
 
 ## 2. 优先级
 
-`v-if`与`v-for`都是`vue`模板系统中的指令。在`vue`模板编译的时候，会将**指令系统**转化成可执行的`render`函数。
-
-**例如：**
-
-编写一个`p`标签，同时使用`v-if`与 `v-for`
-
-```html
-<div id="app">
-    <p v-if="isShow" v-for="item in items">
-        {{ item.title }}
-    </p>
-</div>
-```
-
-创建`vue`实例，存放`isShow`与`items`数据
-
-```js
-const app = new Vue({
-  el: "#app",
-  data() {
-    return {
-      items: [
-        { title: "foo" },
-        { title: "baz" }]
-    }
-  },
-  computed: {
-    isShow() {
-      return this.items && this.items.length > 0
-    }
-  }
-})
-```
-
-模板指令的代码都会生成在`render`函数中，通过`app.$options.render`就能得到渲染函数
-
-```js
-ƒ anonymous() {
-  with (this) { return 
-    _c('div', { attrs: { "id": "app" } }, 
-    _l((items), function (item) 
-    { return (isShow) ? _c('p', [_v("\n" + _s(item.title) + "\n")]) : _e() }), 0) }
-}
-```
-
-`_l`是`vue`的列表渲染函数，函数内部都会进行一次`if`判断
-
-初步得到结论：`v-for`优先级是比`v-if`高
-
-再将`v-for`与`v-if`置于不同标签
-
-```html
-<div id="app">
-    <template v-if="isShow">
-        <p v-for="item in items">{{item.title}}</p>
-    </template>
-</div>
-```
-
-再输出下`render`函数
-
-```js
-ƒ anonymous() {
-  with(this){return 
-    _c('div',{attrs:{"id":"app"}},
-    [(isShow)?[_v("\n"),
-    _l((items),function(item){return _c('p',[_v(_s(item.title))])})]:_e()],2)}
-}
-```
-
-这时候我们可以看到，`v-for`与`v-if`作用在不同标签时候，是先进行判断，再进行列表的渲染
-
-我们再在查看下`vue`源码
-
-源码位置：`\vue-dev\src\compiler\codegen\index.js`
-
-```js
-export function genElement (el: ASTElement, state: CodegenState): string {
-  if (el.parent) {
-    el.pre = el.pre || el.parent.pre
-  }
-  if (el.staticRoot && !el.staticProcessed) {
-    return genStatic(el, state)
-  } else if (el.once && !el.onceProcessed) {
-    return genOnce(el, state)
-  } else if (el.for && !el.forProcessed) {
-    return genFor(el, state)
-  } else if (el.if && !el.ifProcessed) {
-    return genIf(el, state)
-  } else if (el.tag === 'template' && !el.slotTarget && !state.pre) {
-    return genChildren(el, state) || 'void 0'
-  } else if (el.tag === 'slot') {
-    return genSlot(el, state)
-  } else {
-    // component or element
-    ...
-}
-```
-
-在进行`if`判断的时候，`v-for`是比`v-if`先进行判断
-
-**最终结论：`v-for`优先级比`v-if`高**
+在**vue2**中，`v-for`的优先级是高于`v-if`，把它们放在一起，输出的渲染函数中可以看出会先执行循环再判断条件，哪怕我们只渲染列表中一小部分元素，也得在每次重渲染的时候遍历整个列表，这会比较浪费；另外需要注意的是在**vue3**中则完全相反，`v-if`的优先级高于`v-for`，所以`v-if`执行时，它调用的变量还不存在，就会导致异常。
 
 ## 3. 注意事项
 
 1. 永远不要把 `v-if` 和 `v-for` 同时用在同一个元素上，带来**性能方面的浪费**（每次**渲染**都会**先循环再进行条件判断**）
-2. 如果避免出现这种情况，则在外层嵌套`template`（页面渲染不生成`dom`节点），在这一层进行v-if判断，然后在内部进行v-for循环
+2. 如果无法避免出现这种情况，则在外层嵌套`template`（页面渲染不生成`dom`节点），在这一层进行v-if判断，然后在内部进行v-for循环
 
 ```js
 <template v-if="isShow">
