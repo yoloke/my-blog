@@ -1,7 +1,6 @@
 const { createSideBarConfig } = require("./util");
 const JAVASCRIPT_PATH = "/blogs/javascript";
 const HTML_CSS_PATH = "/blogs/html_css";
-const NET_PATH = "/blogs/net";
 const PERFORM_PATH = "/blogs/performance";
 const VUE_PATH = "/blogs/vue";
 const ALGORITHM_PATH = "/blogs/algorithm";
@@ -27,10 +26,7 @@ module.exports = {
   [ALGORITHM_PATH]: [
     createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
     createSideBarConfig("剑指over", ALGORITHM_PATH + "/saber_over"),
-  ],
-  [NET_PATH]: [
-    createSideBarConfig("浏览器", NET_PATH )
-  ],
+  ]
   //[PERFORM_PATH]: [createSideBarConfig('前端性能', PERFORM_PATH)],
   // [INTERVIEW_PATH]: [createSideBarConfig('面试经历', INTERVIEW_PATH)],
   // [BROWSER_PATH]: [
