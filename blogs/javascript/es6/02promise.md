@@ -1,6 +1,6 @@
 ---
-title: 02 Promise 对象
-date: 2021-6-21
+title: 02 Promise 
+date: 2021-06-02
 categories: 
  - ES6
 tags:
@@ -61,7 +61,7 @@ promise.then(function(value) {
 });
 ```
 
-`then`方法可以接受两个回调函数作为参数。第一个回调函数是`Promise`对象的状态变为`resolved`时调用，第二个回调函数是`Promise`对象的状态变为`rejected`时调用。这两个函数都是可选的，不一定要提供。它们都接受`Promise`对象传出的值作为参数。
+`then`方法可以接受两个回调函数作为参数。第一个回调函数是`Promise`对象的状态变为`resolved`时调用，第二个回调函数是`Promise`对象的状态变为`rejected`时调用。这两个函数都是可选的，不一定要提供。它们都接受`Promise`对象传出的值作为参数。(只有在promise状态发生变化时才会调用then)
 
 下面是一个`Promise`对象的简单例子。
 

@@ -1,6 +1,6 @@
 ---
 title: 01 var、let、const区别
-date: 2021-6-20
+date: 2021-06-01
 categories: 
  - ES6
 tags:
