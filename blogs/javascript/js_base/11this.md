@@ -35,6 +35,7 @@ console.log("outer:" + this); // outer: Window
 
 注意，这里我们没有使用严格模式，如果使用严格模式的话，全局对象就是 `undefined`，那么就会报错 `Uncaught TypeError: Cannot read property 'name' of undefined`。
 
+
 **2、以方法的形式调用时，this 就是调用方法的对象**
 
 **例 1：**
@@ -114,6 +115,85 @@ fn();
 ```
 
 这里的`innerFunction()`的调用：是一个函数调用（它就是作为一个函数调用的，没有挂载在任何对象上，所以对于没有挂载在任何对象上的函数，在非严格模式下 this 就是指向 window 的）
+
+对于**回调函数**中的`this`对象。
+
+- **setTimeout函数**
+
+```js
+//普通`setTimeout`函数： 100ms后执行时，this指向window对象
+function foo() {
+	setTimeout(function() {
+		console.log(this);
+		console.log("id: ",this.id);
+		}, 100);
+	}
+	var id=21;
+foo();                   //this指向window对象， 21     
+ 
+foo.call({id:42});        //this指向window对象，21 
+-------------------------------------------------------------
+//箭头setTimeout函数： 
+//箭头函数：this是在定义时生效的。this总是指向函数定义生效时所在的对象。
+function foo() {
+	setTimeout(() =>{
+		 console.log(this);
+		 console.log("id: ",this.id);
+	}, 100);
+}
+ var id=21;
+ foo();           //this指向window id=21
+ foo.call({id:42});       //this指向{id：42}对象 id=42
+```
+
+- **事件处理函数**
+
+```js
+//普通处理函数
+var handler = {
+    id: "123456",
+    init: function () {
+        document.addEventListener(
+            "click",
+            function (e) {
+                this.doSomething(e.type); //this指向window对象。所以会报错：
+                // Uncaught TypeError: this.doSomething is not a function at HTMLDocument.<anonymous> 
+            },
+            false
+        );
+    },
+    doSomething: function (type) {
+        console.log("handler" + type + "for" + this.id);
+    },
+};
+//
+handler.init();
+-------------------------------------------------------------------------------
+// 箭头函数：
+var handler = {
+    id: "123456",
+    init: function () {
+        document.addEventListener(
+            "click",
+            (e) => {
+                this.doSomething(e.type); //this指向handler
+                //console.log(this); // {id: '123456', init: ƒ, doSomething: ƒ}
+            },
+            false
+        );
+    },
+    doSomething: function (type) {
+        console.log("handler " + type + " for " + this.id);// handler click for 123456
+    },
+};
+handler.init();
+```
+
+**总结：**
+
+对于回调函数中的`this`对象。对于普通函数，`this`指向调用时所在的对象（即`window`对象）。对于箭头函数，`this`指向**定义**生效时所在的对象。
+
+
 
 **3、以构造函数的形式调用时，this 就是新创建的对象**
 
