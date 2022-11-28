@@ -9,6 +9,7 @@ module.exports = {
   [HTML_CSS_PATH]: [
     createSideBarConfig("HTML", HTML_CSS_PATH + "/html"),
     createSideBarConfig("CSS", HTML_CSS_PATH + "/css"),
+    createSideBarConfig("移动端", HTML_CSS_PATH + "/mobile"),
   ],
   [JAVASCRIPT_PATH]: [
     createSideBarConfig("JS基础", JAVASCRIPT_PATH + "/js_base"),
