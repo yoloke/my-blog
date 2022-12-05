@@ -3,7 +3,9 @@ const JAVASCRIPT_PATH = "/blogs/javascript";
 const HTML_CSS_PATH = "/blogs/html_css";
 const PERFORM_PATH = "/blogs/performance";
 const VUE_PATH = "/blogs/vue";
+const MINI_PROGRAM = "/blogs/mini_program";
 const ALGORITHM_PATH = "/blogs/algorithm";
+
 
 module.exports = {
   [HTML_CSS_PATH]: [
@@ -23,6 +25,9 @@ module.exports = {
   [VUE_PATH]: [
     createSideBarConfig("Vue", VUE_PATH),
     // createSideBarConfig("前端性能", PERFORM_PATH),
+  ],
+  [MINI_PROGRAM]: [
+    createSideBarConfig("小程序", MINI_PROGRAM),
   ],
   [ALGORITHM_PATH]: [
     createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
