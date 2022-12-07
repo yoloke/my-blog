@@ -14,7 +14,8 @@ module.exports = {
     createSideBarConfig("移动端", HTML_CSS_PATH + "/mobile"),
   ],
   [JAVASCRIPT_PATH]: [
-    createSideBarConfig("JS基础", JAVASCRIPT_PATH + "/js_base"),
+    createSideBarConfig("JavaScript", JAVASCRIPT_PATH + "/js_base"),
+    createSideBarConfig("TypeScript", JAVASCRIPT_PATH + "/typescript"),
     createSideBarConfig("设计模式", JAVASCRIPT_PATH + "/design_mode"),
     createSideBarConfig("Ajax", JAVASCRIPT_PATH + "/ajax"),
     createSideBarConfig("ES6", JAVASCRIPT_PATH + "/es6"),
