@@ -25,9 +25,10 @@ module.exports = {
   ],
   [VUE_PATH]: [
     createSideBarConfig("Vue", VUE_PATH),
-    // createSideBarConfig("前端性能", PERFORM_PATH),
+    createSideBarConfig("小程序", MINI_PROGRAM),
   ],
   [MINI_PROGRAM]: [
+    createSideBarConfig("Vue", VUE_PATH),
     createSideBarConfig("小程序", MINI_PROGRAM),
   ],
   [ALGORITHM_PATH]: [
