@@ -1,6 +1,6 @@
 ---
 title: 03 Ajax
-date: 2022-3-03
+date: 2022-03-03
 categories: 
  - Ajax
 tags:

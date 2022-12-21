@@ -1,6 +1,6 @@
 ---
 title: 01 Ajax、Axios和Fetch区别
-date: 2022-3-01
+date: 2022-03-01
 categories: 
  - Ajax
 tags:
