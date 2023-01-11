@@ -3,7 +3,8 @@ const JAVASCRIPT_PATH = "/blogs/javascript";
 const HTML_CSS_PATH = "/blogs/html_css";
 const HTTP_PATH = "/blogs/http";
 const VUE_PATH = "/blogs/vue";
-const MINI_PROGRAM = "/blogs/mini_program/wx_mini_program";
+const MINI_PROGRAM = "/blogs/mobile/wx_mini_program";
+const MOBILE_PATH = "/blogs/mobile/uniapp";
 const ALGORITHM_PATH = "/blogs/algorithm";
 
 
@@ -28,10 +29,17 @@ module.exports = {
   [VUE_PATH]: [
     createSideBarConfig("Vue", VUE_PATH),
     createSideBarConfig("微信小程序", MINI_PROGRAM),
+    createSideBarConfig("uni-app", MOBILE_PATH)
   ],
   [MINI_PROGRAM]: [
     createSideBarConfig("Vue", VUE_PATH),
     createSideBarConfig("微信小程序", MINI_PROGRAM),
+    createSideBarConfig("uni-app", MOBILE_PATH)
+  ],
+  [MOBILE_PATH]: [
+    createSideBarConfig("Vue", VUE_PATH),
+    createSideBarConfig("微信小程序", MINI_PROGRAM),
+    createSideBarConfig("uni-app", MOBILE_PATH)
   ],
   [ALGORITHM_PATH]: [
     createSideBarConfig("数据结构与算法", ALGORITHM_PATH + "/algorithm_base"),
