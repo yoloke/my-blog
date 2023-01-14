@@ -1,8 +1,9 @@
 ---
-title: 02 文件API
+title: 03 交互反馈API
 date: 2023-01-03
 categories: 
  - uniapp
+
 ---
 
 ## [uni.showToast(OBJECT)](https://uniapp.dcloud.net.cn/api/ui/prompt.html#showtoast)
@@ -209,4 +210,4 @@ uni.showActionSheet({
 **注意**
 
 - 在非H5端，本章的所有弹出控件都是原生控件，层级最高，可覆盖video、map、tabbar等原生控件。
-- [uni-app插件市场](https://ext.dcloud.net.cn/)有很多封装好的前端组件，但注意前端组件层级不是最高，无法覆盖原生组件，除非使用cover-view或nvue。
+- [uni-app插件市场](https://ext.dcloud.net.cn/)有很多封装好的前端组件，但注意前端组件层级不是最高，无法覆盖原生组件，除非使用cover-view或

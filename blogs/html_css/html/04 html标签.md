@@ -15,7 +15,7 @@ categories:
 
 -  图像标签的其他属性：
 
-![image-20221025202353327](https://could-img.oss-cn-hangzhou.aliyuncs.com/202210301443066.png)
+![image-20221025202353327](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/202210301443066.png)
 
 **注意点：**
 
@@ -101,13 +101,13 @@ categories:
 
 通过使用 `<colgroup>` 标签，可以向整个列应用样式，而不需要重复为每个单元格或每一行设置样式。
 
-<img src="https://could-img.oss-cn-hangzhou.aliyuncs.com/202210252058509.png" alt="image-20221025205845087" style="zoom: 33%;" />
+<img src="https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/202210252058509.png" alt="image-20221025205845087" style="zoom: 33%;" />
 
 **表格属性：**
 
-![](https://could-img.oss-cn-hangzhou.aliyuncs.com/202210252055823.png)
+![](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/202210252055823.png)
 
-**语义化表格：**
+### 3.1 语义化表格
 
 `<thead>` 标签用于组合 HTML 表格的表头内容。
 
@@ -137,14 +137,139 @@ categories:
       <td>$80</td>
     </tr>
   </tbody>
-</table>
+</table> 
 ```
 
-<img src="C:/Users/%E5%BC%A0996/AppData/Roaming/Typora/typora-user-images/image-20221025212130231.png" alt="image-20221025212130231" style="zoom:33%;" />
+### 3.2 table实现固定行列
+
+**需要用到的2个属性**
+
+```
+table-layout : fixed  
+position : sticky
+```
+
+**table-layout**属性有两种特定值：
+
+1. `auto`（预设值）-表格的总宽度决定每一个储存格（cell）的最大值
+2. `fixed` - 表格的总宽度决定于表格width的定义，以及各栏位（column）width的定义
+
+为了让表格呈现滚动效果，必须设定`table-layout:fixed `并且给与表格宽度。
+
+```css
+table {
+ table-layout: fixed;
+ width: 100%;
+}
+```
+
+**Position**
+
+固定表格需要使用到 `position : sticky `的设定
+
+`sticky `的表现类似于`relative` 和`fixed `的合体，在目标区域中可见时，他的行为就像`relative `不会有任何变化，而当页面滚动超出目标区域时，他的表现改为`fixed`会固定于目标位置
+
+要注意的是当`position : sticky`应用于`table`，只能作用于`<th>`和`<td>`，并且一定要定义目标位置` left / right / top / bottom `才会出现固定效果！
+
+```css
+thead tr th {
+ position:sticky;
+ top:0;
+}
+```
+
+```css
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>纯CSS实现表格首行和首列固定</title>
+    <!-- 插入Vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+        .main{
+            width: 500px;
+            overflow:auto;
+            height:208px;  /* 设置固定高度 */
+        }
+        td, th {
+            /* 设置td,th宽度高度 */
+            border:1px solid gray;
+            width:100px;
+            height:30px;
+        }
+        th {
+            background-color:lightblue;
+        }
+        table {
+            table-layout: fixed;
+            width: 200px; /* 固定宽度 */
+        }
+        td:first-child, th:first-child {
+            position:sticky;
+            left:0; /* 首行永远固定在左侧 */
+            z-index:1;
+            background-color:lightpink;
+        }
+        thead tr th {
+            position:sticky;
+            top:0; /* 列首永远固定在头部  */
+        }
+        th:first-child{
+            z-index:2;
+            background-color:lightblue;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div class="main">
+        <table  cellspacing="0" >
+            <thead>
+            <tr>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+                <th> </th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr v-for="(item, index) in 30" :key="index">
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+                <td> </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello'
+        },
+    })
+</script>
+</html>
+```
+
+![237138-20201027100610585-481970269](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/237138-20201027100610585-481970269.gif)
 
 ## 4. 列表
-
-![image-20220725095022503](https://could-img.oss-cn-hangzhou.aliyuncs.com/202210252132352.png)
 
 ### 4.1 无序列表
 
@@ -155,8 +280,6 @@ categories:
     <li>列表项3</li>
 </ul>
 ```
-
-<img src="C:/Users/%E5%BC%A0996/AppData/Roaming/Typora/typora-user-images/image-20221025212723398.png" alt="image-20221025212723398" style="zoom:67%;" />
 
 ### 4.2 有序列表
 
@@ -170,13 +293,11 @@ categories:
 
 
 
-<img src="https://could-img.oss-cn-hangzhou.aliyuncs.com/202210252126786.png" alt="image-20221025212648320" style="zoom: 67%;" />
+<img src="https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/202210252126786.png" alt="image-20221025212648320" style="zoom: 67%;" />
 
 ### 4.3 自定义列表
 
-```
-<dl>` 自定义列表的整体，用于包裹`dt`和`dd
-```
+`dl` 自定义列表的整体，用于包裹`dt`和`dd`
 
 - ` <dt>`自定义列表的主题
 - `<dd>`定义列表主题的每一项内容
@@ -189,7 +310,7 @@ categories:
 </dl>
 ```
 
-<img src="C:/Users/%E5%BC%A0996/AppData/Roaming/Typora/typora-user-images/image-20221025213030998.png" alt="image-20221025213030998" style="zoom:50%;" />
+![image-20230112182041272](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/image-20230112182041272.png)
 
 ## 5. b strong、i em
 
@@ -212,9 +333,7 @@ categories:
      <input type="radio" name="sex" id="female">
 </form>
 ```
+
 ## 7. TDK
 
 在SEO中，TDK其实就是`title`标题标签、`description`描述标签、`keywords`关键词标签这三个标签
-
-
-
