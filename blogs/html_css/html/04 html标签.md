@@ -57,7 +57,7 @@ categories:
 - 空链接：如果当时没有确定链接目标时
 
   ```html
-   a href="#"> 首页 </a>
+   < a href="#"> 首页 </a>
   ```
 
 - 下载链接：如果 `href `里面地址是一个文件或者压缩包，会下载这个文件。
@@ -176,9 +176,6 @@ thead tr th {
  position:sticky;
  top:0;
 }
-```
-
-```css
 <!DOCTYPE html>
 <html lang="zh">
 <head>
@@ -267,7 +264,7 @@ thead tr th {
 </html>
 ```
 
-![237138-20201027100610585-481970269](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/237138-20201027100610585-481970269.gif)
+![](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/237138-20201027100610585-481970269.gif)
 
 ## 4. 列表
 
@@ -297,7 +294,9 @@ thead tr th {
 
 ### 4.3 自定义列表
 
-`dl` 自定义列表的整体，用于包裹`dt`和`dd`
+```
+dl` 自定义列表的整体，用于包裹`dt`和`dd
+```
 
 - ` <dt>`自定义列表的主题
 - `<dd>`定义列表主题的每一项内容
@@ -310,7 +309,7 @@ thead tr th {
 </dl>
 ```
 
-![image-20230112182041272](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/image-20230112182041272.png)
+![](https://wf-cloud-img.oss-cn-hangzhou.aliyuncs.com/image/image-20230112182041272.png)
 
 ## 5. b strong、i em
 
@@ -336,4 +335,4 @@ thead tr th {
 
 ## 7. TDK
 
-在SEO中，TDK其实就是`title`标题标签、`description`描述标签、`keywords`关键词标签这三个标签
+在SEO中，TDK其实就是`title`标题标签、`description`描述标签、`keywords`关键词标签这三个标签。
