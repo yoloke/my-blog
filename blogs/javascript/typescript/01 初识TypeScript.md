@@ -39,7 +39,7 @@ npm i -g typescript
 npm i -g ts-node
 ```
 
-**创建一个 `tsconfig.json` 文件**
+**生成配置文件`tsconfig.json`**
 
 ```js
 tsc --init
